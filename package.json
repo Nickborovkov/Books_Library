@@ -1,6 +1,6 @@
 {
-  "name": "google_books_api_app",
-  "homepage": "http://gitname.github.io/google_books_api_app",
+  "name": "google_books_app",
+  "homepage": "http://gitname.github.io/google_books_app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
