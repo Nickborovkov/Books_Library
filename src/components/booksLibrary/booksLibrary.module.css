@@ -19,6 +19,13 @@
     -moz-border-radius: 10px;
     border-radius: 10px;
 }
+.title{
+    color: cornflowerblue;
+    text-align: center;
+}
+.subtitle{
+    text-align: center;
+}
 .link{
     text-decoration: none;
     color: #333333;

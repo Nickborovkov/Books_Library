@@ -1,14 +1,31 @@
 import './App.css';
-import React, {Suspense} from "react";
+import React, {lazy, Suspense, useEffect, useState} from "react";
+import {Redirect, Route, Switch} from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import BooksLibrary from "./components/booksLibrary/BooksLibrary";
 import Preloader from "./common/preloader/Preloader";
-import {Redirect, Route, Switch} from "react-router-dom";
-import BookInfo from "./components/bookInfo/BookInfo";
-import ErrorPage from "./common/errorPage/ErrorPage";
+import { BiUpArrow } from 'react-icons/bi'
+
+//Lazy loading
+const BookInfo = lazy( () => import("./components/bookInfo/BookInfo") );
+const ErrorPage = lazy( () => import("./common/errorPage/ErrorPage") );
 
 const App = () => {
+
+    //Go back to top button
+    const [showButton, setShowButton] = useState(false);
+
+    useEffect(() => {
+        window.addEventListener(`scroll`, () => {
+            if (window.pageYOffset > 1100) {
+                setShowButton(true);
+            } else {
+                setShowButton(false);
+            }
+        });
+    }, []);
+
     return (
         <div>
             <Header/>
@@ -25,6 +42,13 @@ const App = () => {
                 </Switch>
             </Suspense>
             <Footer/>
+
+            {/*Go back to top button*/}
+            {showButton &&
+            <button className='backToTop'
+                    onClick={ () => {window.scrollTo({top: 0, behavior: "smooth"})} }>
+                <BiUpArrow/>
+            </button>}
 
         </div>
     )

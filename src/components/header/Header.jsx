@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <NavLink to='/' className={styles.header}>
             <div className={styles.logoWrapper}>
-                <img className={styles.logo} style={{width: `40px`}} src={appLogo} alt="appLogo"/>
+                <img className={styles.logo} src={appLogo} alt="appLogo"/>
             </div>
             <h2 className={styles.title}>Google Books API app</h2>
         </NavLink>
