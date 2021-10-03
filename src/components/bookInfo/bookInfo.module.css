@@ -1,0 +1,13 @@
+.specificBook{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.column{
+    width: 500px;
+}
+.image{
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+}
