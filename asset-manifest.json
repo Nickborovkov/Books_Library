@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/google_books_app/static/css/main.52b201cf.chunk.css",
-    "main.js": "/google_books_app/static/js/main.9c98c750.chunk.js",
-    "main.js.map": "/google_books_app/static/js/main.9c98c750.chunk.js.map",
+    "main.js": "/google_books_app/static/js/main.a9d4ea25.chunk.js",
+    "main.js.map": "/google_books_app/static/js/main.a9d4ea25.chunk.js.map",
     "runtime-main.js": "/google_books_app/static/js/runtime-main.b93bdbe1.js",
     "runtime-main.js.map": "/google_books_app/static/js/runtime-main.b93bdbe1.js.map",
     "static/js/2.15b9a27a.chunk.js": "/google_books_app/static/js/2.15b9a27a.chunk.js",
@@ -27,6 +27,6 @@
     "static/js/runtime-main.b93bdbe1.js",
     "static/js/2.15b9a27a.chunk.js",
     "static/css/main.52b201cf.chunk.css",
-    "static/js/main.9c98c750.chunk.js"
+    "static/js/main.a9d4ea25.chunk.js"
   ]
 }
