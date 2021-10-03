@@ -1,6 +1,7 @@
 # Google books app
 ### [API provided by Google](https://developers.google.com/books/docs/v1/using)
 
+![image](https://github.com/Nickborovkov/google_books_app/blob/master/appScreenshot.png)
 
 ### [See app deployment](https://nickborovkov.github.io/google_books_app/)
 
