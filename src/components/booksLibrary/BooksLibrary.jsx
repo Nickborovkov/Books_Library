@@ -1,7 +1,7 @@
 import React, {memo, useEffect, useState} from "react";
 import styles from './booksLibrary.module.css'
 import {useDispatch, useSelector} from "react-redux";
-import Preloader from "../../common/preloader/Preloader";
+import Preloader from "../common/preloader/Preloader";
 import {getBooksList, getMoreBooks} from "../../store/booksLibraryReducer";
 import BookItem from "./bookItem/BookItem";
 import BooksSearch from "./booksSearch/BooksSearch";

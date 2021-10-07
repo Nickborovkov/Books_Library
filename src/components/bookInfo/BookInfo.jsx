@@ -2,7 +2,7 @@ import React, {memo, useEffect} from "react";
 import styles from './bookInfo.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {getSpecificBook} from "../../store/booksLibraryReducer";
-import Preloader from "../../common/preloader/Preloader";
+import Preloader from "../common/preloader/Preloader";
 import noImageAvailable from '../../assets/images/noImageAvailable.png'
 import {setNewError} from "../../store/commonReducer";
 import { FaArrowAltCircleLeft } from 'react-icons/fa'

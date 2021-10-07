@@ -4,12 +4,12 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import BooksLibrary from "./components/booksLibrary/BooksLibrary";
-import Preloader from "./common/preloader/Preloader";
+import Preloader from "./components/common/preloader/Preloader";
 import { BiUpArrow } from 'react-icons/bi'
 
 //Lazy loading
 const BookInfo = lazy( () => import("./components/bookInfo/BookInfo") );
-const ErrorPage = lazy( () => import("./common/errorPage/ErrorPage") );
+const ErrorPage = lazy( () => import("./components/common/errorPage/ErrorPage") );
 
 const App = () => {
 

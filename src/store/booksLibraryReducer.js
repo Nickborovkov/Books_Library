@@ -1,4 +1,4 @@
-import {gBooksRequests} from "../serverRequest/serverRequest";
+import {gBooksRequests} from "../API/serverRequest";
 import {setNewError, toggleIsLoading} from "./commonReducer";
 
 const SET_BOOKS = `gBooks/booksLibrary/SET_BOOKS`
