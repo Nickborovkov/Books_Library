@@ -1,6 +1,6 @@
 {
-  "name": "google_books_app",
-  "homepage": "http://gitname.github.io/google_books_app",
+  "name": "Books_Library",
+  "homepage": "http://gitname.github.io/Books_Library",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

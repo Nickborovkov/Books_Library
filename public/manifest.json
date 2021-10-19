@@ -1,6 +1,6 @@
 {
-  "short_name": "gBooks",
-  "name": "Google Books app",
+  "short_name": "Books Library",
+  "name": "Books Library",
   "icons": [
     {
       "src": "favicon.ico",
