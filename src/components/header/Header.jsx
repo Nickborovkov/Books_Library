@@ -1,16 +1,26 @@
 import React from "react";
 import appLogo from '../../assets/images/appLogo.png'
-import {NavLink} from "react-router-dom";
+import {Row} from "antd";
+import {Header} from "antd/lib/layout/layout";
 
-const Header = () => {
+const AppHeader = () => {
     return (
-        <NavLink to='/'>
-            <div>
-                <img src={appLogo} alt="appLogo"/>
-            </div>
-            <h2>Google Books API app</h2>
-        </NavLink>
+        <Header>
+            <Row
+                type='flex'
+            >
+                <div style={{width: `40px`, marginRight: `20px`}}>
+                    <img
+                        src={appLogo}
+                        alt="appLogo"
+                        style={{width: `100%`}}
+                    />
+                </div>
+                <h2 style={{color: `#ffffff`}}>Google Books API app</h2>
+            </Row>
+        </Header>
+
     )
 }
 
-export default Header
+export default AppHeader

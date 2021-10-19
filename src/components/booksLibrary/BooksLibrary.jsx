@@ -5,10 +5,11 @@ import {getBooksList, getMoreBooks} from "../../store/booksLibraryReducer";
 import BookItem from "./BookItem";
 import BooksSearch from "../common/booksSearch/BooksSearch";
 import {setNewError} from "../../store/commonReducer";
+import {Row} from "antd";
 
 const BooksLibrary = memo(() => {
     //State
-    const [search, setSearch] = useState(``)
+    const [search, setSearch] = useState(`javascript`)
     const [order, setOrder] = useState(`relevance`)
     const [startIndex, setStartIndex] = useState(0)
     const [category, setCategory] = useState(` `)
@@ -66,13 +67,21 @@ const BooksLibrary = memo(() => {
             {!isLoading && !error && <div>
                 <h3>Total results: {totalBooks}</h3>
 
-                <div>
-                    {booksList.map(item =>
-                        <BookItem
-                            key={booksList.indexOf(item)}
-                            item={item}/>)
-                    }
+                <div style={{width: `90%`, margin: `50px auto`}}>
+                    <Row
+                        justify="center"
+                        flex={1}
+                        gutter={[20,20]}
+                    >
+                        {booksList.map(item =>
+                            <BookItem
+                                key={booksList.indexOf(item)}
+                                item={item}
+                            />)
+                        }
+                    </Row>
                 </div>
+
 
                 {/*Load more button disabled while loading and when there's no more items to load*/}
                 <button

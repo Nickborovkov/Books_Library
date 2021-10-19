@@ -1,11 +1,11 @@
 import './App.css';
 import React, {lazy, Suspense, useEffect, useState} from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
-import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import BooksLibrary from "./components/booksLibrary/BooksLibrary";
 import Preloader from "./components/common/preloader/Preloader";
 import { BiUpArrow } from 'react-icons/bi'
+import AppHeader from "./components/header/Header";
 
 //Lazy loading
 const BookInfo = lazy( () => import("./components/bookInfo/BookInfo") );
@@ -28,7 +28,7 @@ const App = () => {
 
     return (
         <div>
-            <Header/>
+            <AppHeader/>
             <Suspense fallback={<Preloader/>}>
                 <Switch>
                     <Route path='/booksLibrary'
