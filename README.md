@@ -6,12 +6,11 @@
 ### [See app deployment](https://nickborovkov.github.io/google_books_app/)
 
 ## Functionality
-- The app is responsive
+- The app is responsive (Ant Design layout)
 - Search books in Google books API library
 - Sorting by revelance / newest
 - Filter by category
 - Open book's page too see it's additional info
-- All errors are handled
 
 ### Used libs:
 - redux
@@ -21,5 +20,4 @@
 - axios
 - formik
 - yup
-
-### This is a tesk task for Frontend developer position [see the task](https://github.com/Nickborovkov/google_books_app/blob/master/task.md)
+- Ant Design
