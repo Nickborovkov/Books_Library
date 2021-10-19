@@ -1,5 +1,4 @@
 import React from "react";
-import styles from './bookSearch.module.css'
 import {Form, Formik} from "formik";
 import * as yup from 'yup'
 
@@ -23,7 +22,7 @@ const BooksSearch = ({search, setSearch, order, setOrder, category, setCategory}
     }
 
     return (
-        <div className={styles.searchWrapper}>
+        <div>
             <Formik
                 initialValues={{
                 search: search,
@@ -36,18 +35,17 @@ const BooksSearch = ({search, setSearch, order, setOrder, category, setCategory}
             >
                 {({values, errors, touched, handleChange, handleBlur,
                       handleSubmit, isValid, dirty})=>(
-                          <Form className={styles.search}>
+                          <Form>
                               {errors.search && touched.search &&
-                              <p className={styles.errors}>{errors.search}</p>}
+                              <p>{errors.search}</p>}
                               <input
-                                  className={styles.searchInput}
                                   type="text"
                                   name='search'
                                   value={values.search}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
                               />
-                              <button className={styles.searchButton}
+                              <button
                                   disabled={!isValid && !dirty}
                                   type={'submit'}
                                   onSubmit={handleSubmit}>Search</button>
@@ -55,9 +53,9 @@ const BooksSearch = ({search, setSearch, order, setOrder, category, setCategory}
                 )}
             </Formik>
 
-            <div className={styles.filters}>
-                <label className={styles.label}>Category:
-                    <select className={styles.select} value={category} onChange={setNewCategory}>
+            <div>
+                <label >Category:
+                    <select value={category} onChange={setNewCategory}>
                         <option value="All">All</option>
                         <option value="Art">Art</option>
                         <option value="Biography">Biography</option>
@@ -67,8 +65,8 @@ const BooksSearch = ({search, setSearch, order, setOrder, category, setCategory}
                         <option value="Poetry">Poetry</option>
                     </select>
                 </label>
-                <label className={styles.label}>Sort by:
-                    <select className={styles.select} value={order} onChange={setNewOrder}>
+                <label >Sort by:
+                    <select value={order} onChange={setNewOrder}>
                         <option value="relevance">Relevance</option>
                         <option value="newest">Newest</option>
                     </select>

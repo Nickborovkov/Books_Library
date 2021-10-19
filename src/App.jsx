@@ -45,7 +45,7 @@ const App = () => {
 
             {/*Go back to top button*/}
             {showButton &&
-            <button className='backToTop'
+            <button
                     onClick={ () => {window.scrollTo({top: 0, behavior: "smooth"})} }>
                 <BiUpArrow/>
             </button>}

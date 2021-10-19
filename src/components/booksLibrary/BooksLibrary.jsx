@@ -1,10 +1,9 @@
 import React, {memo, useEffect, useState} from "react";
-import styles from './booksLibrary.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import Preloader from "../common/preloader/Preloader";
 import {getBooksList, getMoreBooks} from "../../store/booksLibraryReducer";
-import BookItem from "./bookItem/BookItem";
-import BooksSearch from "./booksSearch/BooksSearch";
+import BookItem from "./BookItem";
+import BooksSearch from "../common/booksSearch/BooksSearch";
 import {setNewError} from "../../store/commonReducer";
 
 const BooksLibrary = memo(() => {
@@ -58,16 +57,16 @@ const BooksLibrary = memo(() => {
                          setCategory={setCategory}/>
 
             {/*Error case*/}
-            {error && <div className={styles.error}>No results, change query or category</div>}
+            {error && <div>No results, change query or category</div>}
 
             {/*Preloader*/}
             {isLoading && <Preloader/>}
 
             {/*Results*/}
             {!isLoading && !error && <div>
-                <h3 className={styles.totalBooks}>Total results: {totalBooks}</h3>
+                <h3>Total results: {totalBooks}</h3>
 
-                <div className={styles.books}>
+                <div>
                     {booksList.map(item =>
                         <BookItem
                             key={booksList.indexOf(item)}
@@ -78,7 +77,6 @@ const BooksLibrary = memo(() => {
                 {/*Load more button disabled while loading and when there's no more items to load*/}
                 <button
                     disabled={totalBooks - booksList.length <= 0 || isLoadingMore}
-                    className={styles.loadMore}
                     onClick={loadMoreBooks}
                 >{isLoadingMore ? `Loading...` : `Load more`}</button>
             </div>}
