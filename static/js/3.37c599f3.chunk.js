@@ -1,2 +1,0 @@
-(this.webpackJsonpgoogle_books_app=this.webpackJsonpgoogle_books_app||[]).push([[3],{245:function(e,r,o){e.exports={error:"errorPage_error__1ASnS",link:"errorPage_link__13ZRS",text:"errorPage_text__31xy_"}},247:function(e,r,o){"use strict";o.r(r);o(1);var t=o(245),a=o.n(t),s=o(26),n=o(2);r.default=function(){return Object(n.jsxs)("div",{className:a.a.error,children:[Object(n.jsx)(s.b,{className:a.a.link,to:"/",children:"Back home"}),Object(n.jsx)("h1",{className:a.a.text,children:"Page not found"})]})}}}]);
-//# sourceMappingURL=3.37c599f3.chunk.js.map
