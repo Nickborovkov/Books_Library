@@ -1,11 +1,10 @@
 import React, {memo, useEffect} from "react";
-import styles from './bookInfo.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {getSpecificBook} from "../../store/booksLibraryReducer";
-import Preloader from "../common/preloader/Preloader";
 import noImageAvailable from '../../assets/images/noImageAvailable.png'
 import {setNewError} from "../../store/commonReducer";
-import { FaArrowAltCircleLeft } from 'react-icons/fa'
+import {Button, Card, Col, Row, Skeleton, Typography} from "antd";
+import LeftCircleOutlined from "@ant-design/icons/lib/icons/LeftCircleOutlined";
 
 const BookInfo = memo((props) => {
 
@@ -23,80 +22,113 @@ const BookInfo = memo((props) => {
         dispatch(getSpecificBook(specificBookId))
     },[dispatch, specificBookId])
 
+    const { Title } = Typography;
+
     return (
         <div>
-            <button
-                className={styles.backButton}
-                onClick={ () => {props.history.goBack()} }>
-                <FaArrowAltCircleLeft/> Back to list
-            </button>
+            <Button
+                style={{display: `block`, margin: "50px auto"}}
+                type='primary'
+                onClick={ () => {props.history.goBack()} }
+            >
+                <LeftCircleOutlined /> Back to list
+            </Button>
 
             {/*Error case*/}
-            {error && <div>{error}</div>}
+            {error &&
+            <Card style={{width: `60%`, margin: `100px auto`}}>
+                <Title
+                    type='danger'
+                    align='center'
+                    level={2}
+                >
+                    No data</Title>
+            </Card>}
 
             {/*Preloader*/}
-            {isLoading && <Preloader/>}
+            {isLoading &&
+                <div style={{width: `90%`, margin: `auto`}}>
+                    <Row
+                        justify='center'
+                        gutter={[10,10]}
+                    >
+                        <Col xs={24}>
+                            <Skeleton active />
+                        </Col>
+                        <Col xs={24} md={12}>
+                            <Skeleton active />
+                        </Col>
+                        <Col xs={24} md={12}>
+                            <Skeleton active />
+                        </Col>
+                    </Row>
+                </div>}
 
             {/*Results*/}
-            {!isLoading && specificBook && !error && <div className={styles.specificBook}>
-                {/*Each item does note show if it's empty*/}
-                <div className={styles.column}>
-                    <img
-                        className={styles.image}
-                        src={specificBook.volumeInfo.imageLinks ? specificBook.volumeInfo.imageLinks.thumbnail : noImageAvailable}
-                        alt=""/>
-                </div>
-                <div className={styles.column}>
-                    {specificBook.volumeInfo.title && <div>
-                        <h2 className={styles.name}>{specificBook.volumeInfo.title}</h2>
-                        <hr/>
-                    </div>}
+            {!isLoading && specificBook && !error &&
+                <div style={{width: `90%`, margin: `auto`}}>
+                    <Row  gutter={[10,10]}>
 
-                    {specificBook.volumeInfo.authors && <div>
-                        <h3 className={styles.span}>Authors:</h3>
-                        <ul>
-                            {specificBook.volumeInfo.authors.map(item => <li key={item}>{item}</li>)}
-                        </ul>
-                        <hr/>
-                    </div>}
+                        <Col xs={24}>
+                            <Title
+                                align='center'
+                                level={2}
+                            >
+                                {specificBook.title}
+                            </Title>
+                        </Col>
 
-                    {specificBook.volumeInfo.publisher && <div>
-                        <h4><span className={styles.span}>Publisher:</span> {specificBook.volumeInfo.publisher}</h4>
-                        <hr/>
-                    </div>}
+                        <Col xs={24} md={12}>
+                            <Card
+                                cover={<img
+                                    alt="bookItem"
+                                    src={specificBook.imageLinks
+                                        ? specificBook.imageLinks.thumbnail
+                                        : noImageAvailable}
+                                />
+                                }>
 
-                    {specificBook.volumeInfo.publishedDate && <div>
-                        <h4><span className={styles.span}>Date:</span> {specificBook.volumeInfo.publishedDate}</h4>
-                        <hr/>
-                    </div>}
+                            </Card>
+                        </Col>
 
-                    {specificBook.volumeInfo.description && <div>
-                        <p><span className={styles.span}>Description</span>: {specificBook.volumeInfo.description}</p>
-                        <hr/>
-                    </div>}
-
-                    {specificBook.volumeInfo.pageCount && <div>
-                        <p><span className={styles.span}>Pages:</span> {specificBook.volumeInfo.pageCount}</p>
-                        <hr/>
-                    </div>}
-
-                    {specificBook.volumeInfo.language && <div>
-                        <p><span className={styles.span}>Language:</span> {specificBook.volumeInfo.language}</p>
-                        <hr/>
-                    </div>}
-
-                    {specificBook.volumeInfo.categories &&
-                    <div>
-                        <p className={styles.span}>Categorises:</p>
-                        <ul>
-                            {specificBook.volumeInfo.categories.map(item => <li key={item}>{item}</li>)}
-                        </ul>
-                    </div>}
-
-                </div>
-
-
-            </div>}
+                        <Col xs={24} md={12}>
+                            <Card>
+                                <Card
+                                    type="inner"
+                                    title='Authors'
+                                >
+                                    <ul>
+                                        {
+                                            specificBook.authors.map(item => {
+                                                return (
+                                                    <li key={item}>{item}</li>
+                                                )
+                                            })
+                                        }
+                                    </ul>
+                                </Card>
+                                {
+                                    [`publisher`, `publishedDate`, `description`,
+                                        `pageCount`, `language`, `categories`].map(item => {
+                                        return (
+                                            <Card
+                                                key={item}
+                                                type="inner"
+                                                title={
+                                                    <span style={{textTransform: `capitalize`}}
+                                                    >
+                                                    {item}
+                                                </span>}
+                                            >
+                                                {specificBook[item]}
+                                            </Card>
+                                        )
+                                    })
+                                }
+                            </Card>
+                        </Col>
+                    </Row>
+                </div>}
 
         </div>
     )

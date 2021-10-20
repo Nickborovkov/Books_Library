@@ -1,18 +1,18 @@
 import React, {memo, useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import Preloader from "../common/preloader/Preloader";
 import {getBooksList, getMoreBooks} from "../../store/booksLibraryReducer";
 import BookItem from "./BookItem";
 import BooksSearch from "../common/booksSearch/BooksSearch";
 import {setNewError} from "../../store/commonReducer";
-import {Row} from "antd";
+import {Content} from "antd/lib/layout/layout";
+import {Button, Card, Col, Row, Skeleton, Typography} from "antd";
 
 const BooksLibrary = memo(() => {
     //State
     const [search, setSearch] = useState(`javascript`)
     const [order, setOrder] = useState(`relevance`)
     const [startIndex, setStartIndex] = useState(0)
-    const [category, setCategory] = useState(` `)
+    const [category, setCategory] = useState(`computers`)
 
     const dispatch = useDispatch()
     const error = useSelector(state => state.common.error)
@@ -26,7 +26,7 @@ const BooksLibrary = memo(() => {
         dispatch(setNewError(null))
         dispatch(getBooksList(search, order, 0, 30, category))
         if(search !== ``){
-            window.scrollTo(0, 1200)
+            window.scrollTo(0, 300)
         }
     },[dispatch, setSearch, search, order, category])
 
@@ -47,6 +47,8 @@ const BooksLibrary = memo(() => {
         }
     }
 
+    const { Title } = Typography;
+
     return (
         <div>
             {/*Search field*/}
@@ -58,19 +60,46 @@ const BooksLibrary = memo(() => {
                          setCategory={setCategory}/>
 
             {/*Error case*/}
-            {error && <div>No results, change query or category</div>}
+            {error &&
+                <Card style={{width: `60%`, margin: `100px auto`}}>
+                    <Title
+                        type='danger'
+                        align='center'
+                        level={2}
+                    >
+                        No results, change query or category</Title>
+                </Card>
+            }
 
-            {/*Preloader*/}
-            {isLoading && <Preloader/>}
-
-            {/*Results*/}
-            {!isLoading && !error && <div>
-                <h3>Total results: {totalBooks}</h3>
-
+            {/*Preloader skeleton*/}
+            {isLoading &&
                 <div style={{width: `90%`, margin: `50px auto`}}>
                     <Row
+                        justify='center'
+                        gutter={[20,20]}
+                    >
+                        {
+                            [1,2,3,4,5,6].map(item => <Col key={item} xs={24} sm={12} md={8} lg={6} xl={4}>
+                                <Skeleton active />
+                            </Col>)
+                        }
+
+                    </Row>
+                </div>}
+
+            {/*Results*/}
+            {!isLoading && !error &&
+            <div>
+                <Title
+                    align='center'
+                    level={3}
+                >
+                    Total results: {totalBooks}
+                </Title>
+
+                <Content style={{width: `90%`, margin: `50px auto`}}>
+                    <Row
                         justify="center"
-                        flex={1}
                         gutter={[20,20]}
                     >
                         {booksList.map(item =>
@@ -80,14 +109,19 @@ const BooksLibrary = memo(() => {
                             />)
                         }
                     </Row>
-                </div>
+                </Content>
 
 
                 {/*Load more button disabled while loading and when there's no more items to load*/}
-                <button
+                <Button
+                    type='primary'
+                    loading={isLoadingMore}
+                    style={{display: `block`, margin: `50px auto`}}
                     disabled={totalBooks - booksList.length <= 0 || isLoadingMore}
                     onClick={loadMoreBooks}
-                >{isLoadingMore ? `Loading...` : `Load more`}</button>
+                >
+                    Load more
+                </Button>
             </div>}
         </div>
     )

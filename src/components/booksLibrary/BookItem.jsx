@@ -22,7 +22,9 @@ const BookItem = memo(({item}) => {
                         />}
                     >
                         {item.volumeInfo.authors &&
-                        <Meta title="Author:" description={item.volumeInfo.authors}/>}
+                        <Meta
+                            title="Author:"
+                            description={item.volumeInfo.authors[0]}/>}
                     </Card>
                 </NavLink>
             </Col>

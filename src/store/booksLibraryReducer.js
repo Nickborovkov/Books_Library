@@ -69,10 +69,13 @@ const setIsLoadingMore = (isLoadingMore) =>
 
 
 //THUNK
-export const getBooksList = (booksSearch, orderBy, startIndex, maxResults, category = ` `) => async dispatch => {
+export const getBooksList = (booksSearch, orderBy, startIndex, maxResults, category = ` `) =>
+    async dispatch => {
     try {
         dispatch(toggleIsLoading(true))
-        const response = await gBooksRequests.getBooksFromAPI(booksSearch, orderBy, startIndex, maxResults, category)
+        const response = await gBooksRequests
+            .getBooksFromAPI(booksSearch, orderBy, startIndex, maxResults, category)
+
         if (response.data.totalItems > 0) {
             dispatch(setBooksList(response.data.items))
             dispatch(setTotalBooks(response.data.totalItems))
@@ -85,18 +88,28 @@ export const getBooksList = (booksSearch, orderBy, startIndex, maxResults, categ
     }
 }
 
-export const getMoreBooks = (booksSearch, orderBy, startIndex, maxResults, category) => async dispatch => {
-    dispatch(setIsLoadingMore(true))
-    const response = await gBooksRequests.getBooksFromAPI(booksSearch, orderBy, startIndex, maxResults, category)
-    dispatch(setMoreBooks(response.data.items))
-    dispatch(setIsLoadingMore(false))
+export const getMoreBooks = (booksSearch, orderBy, startIndex, maxResults, category) =>
+    async dispatch => {
+    try {
+        dispatch(setIsLoadingMore(true))
+        const response = await gBooksRequests
+            .getBooksFromAPI(booksSearch, orderBy, startIndex, maxResults, category)
+
+        dispatch(setMoreBooks(response.data.items))
+        dispatch(setIsLoadingMore(false))
+    }catch (error) {
+        dispatch(setNewError(error.name))
+    }
+
 }
 
 export const getSpecificBook = (bookId) => async dispatch => {
     try {
         dispatch(toggleIsLoading(true))
-        const response = await gBooksRequests.getSpecificBook(bookId)
-        dispatch(setSpecificBook(response.data))
+        const response = await gBooksRequests
+            .getSpecificBook(bookId)
+
+        dispatch(setSpecificBook(response.data.volumeInfo))
         dispatch(toggleIsLoading(false))
     } catch (error) {
         dispatch(setNewError(error.name))

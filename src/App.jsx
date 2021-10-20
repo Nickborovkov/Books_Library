@@ -1,11 +1,12 @@
 import './App.css';
 import React, {lazy, Suspense, useEffect, useState} from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
-import Footer from "./components/footer/Footer";
 import BooksLibrary from "./components/booksLibrary/BooksLibrary";
 import Preloader from "./components/common/preloader/Preloader";
-import { BiUpArrow } from 'react-icons/bi'
 import AppHeader from "./components/header/Header";
+import AppFooter from "./components/footer/Footer";
+import {Button} from "antd";
+import UpCircleOutlined from "@ant-design/icons/lib/icons/UpCircleOutlined";
 
 //Lazy loading
 const BookInfo = lazy( () => import("./components/bookInfo/BookInfo") );
@@ -38,17 +39,21 @@ const App = () => {
                     <Route exact path='/'
                            render={() => <Redirect to='/booksLibrary'/>}/>
                     <Route path='*'
-                           render={() => <ErrorPage/>}/>
+                           render={(props) => <ErrorPage {...props}/>}/>
                 </Switch>
             </Suspense>
-            <Footer/>
+            <AppFooter/>
 
             {/*Go back to top button*/}
             {showButton &&
-            <button
-                    onClick={ () => {window.scrollTo({top: 0, behavior: "smooth"})} }>
-                <BiUpArrow/>
-            </button>}
+            <Button
+                type='primary'
+                size='large'
+                style={{position: "fixed", bottom: `80px`, right: `20px`, opacity: 0.6}}
+                onClick={ () => {window.scrollTo({top: 0, behavior: "smooth"})} }
+            >
+                <UpCircleOutlined />
+            </Button>}
 
         </div>
     )

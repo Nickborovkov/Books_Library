@@ -1,11 +1,13 @@
 import React from "react";
-import { BiLoaderCircle } from 'react-icons/bi'
+import {Spin} from "antd";
 
 const Preloader = () => {
     return (
-        <div>
-            <BiLoaderCircle/>
-        </div>
+        <Spin
+            style={{display: `block`, margin: `100px auto`}}
+            tip="Loading..."
+            size='large'>
+        </Spin>
     )
 }
 
