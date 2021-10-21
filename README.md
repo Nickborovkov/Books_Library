@@ -1,16 +1,19 @@
-# Google books app
-### [API provided by Google](https://developers.google.com/books/docs/v1/using)
+# Booze Search
 
-![image](https://github.com/Nickborovkov/google_books_app/blob/master/src/assets/images/appScreenshot.png)
+## Search in google books library
 
-### [See app deployment](https://nickborovkov.github.io/google_books_app/)
+### [API provided by Googleapis](https://developers.google.com/books/docs/v1/using)
+
+![image](https://github.com/Nickborovkov/Books_Library/blob/master/src/assets/appScreenshot.png)
+
+### [See app deployment](https://nickborovkov.github.io/Books_Library/#/booksLibrary)
 
 ## Functionality
-- The app is responsive (Ant Design layout)
-- Search books in Google books API library
-- Sorting by revelance / newest
-- Filter by category
-- Open book's page too see it's additional info
+- The app is responsive (Ant design layout)
+- Search books in library
+- Open book to see details
+- Sort by category
+- Sort by revelance/newest 
 
 ### Used libs:
 - redux
@@ -20,4 +23,4 @@
 - axios
 - formik
 - yup
-- Ant Design
+- Ant design
