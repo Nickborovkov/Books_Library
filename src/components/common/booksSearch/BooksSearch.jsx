@@ -100,8 +100,8 @@ const BooksSearch = ({search, setSearch, order, setOrder, category, setCategory}
                                 style={{width: 200, margin: `0 10px`}}
                                 onChange={setNewOrder}
                             >
-                                <Option value="relevance">relevance</Option>
-                                <Option value="newest">newest</Option>
+                                <Option value="relevance">Relevance</Option>
+                                <Option value="newest">Newest</Option>
                             </Select>
                         </Row>
 

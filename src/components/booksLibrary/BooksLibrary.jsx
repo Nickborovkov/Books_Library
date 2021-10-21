@@ -12,7 +12,7 @@ const BooksLibrary = memo(() => {
     const [search, setSearch] = useState(`javascript`)
     const [order, setOrder] = useState(`relevance`)
     const [startIndex, setStartIndex] = useState(0)
-    const [category, setCategory] = useState(`computers`)
+    const [category, setCategory] = useState(`Computers`)
 
     const dispatch = useDispatch()
     const error = useSelector(state => state.common.error)

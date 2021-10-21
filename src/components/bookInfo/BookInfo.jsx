@@ -80,6 +80,7 @@ const BookInfo = memo((props) => {
 
                         <Col xs={24} md={6}>
                             <Card
+                                bordered={false}
                                 cover={<img
                                     alt="bookItem"
                                     src={specificBook.imageLinks
@@ -92,10 +93,12 @@ const BookInfo = memo((props) => {
                         </Col>
 
                         <Col xs={24} md={12}>
-                            <Card>
+                            <Card
+                                bordered={false}
+                            >
                                 <Card
                                     type="inner"
-                                    title='Authors'
+                                    title='Authors:'
                                 >
                                     <ul>
                                         {
@@ -110,19 +113,22 @@ const BookInfo = memo((props) => {
                                 {
                                     [`publisher`, `publishedDate`, `description`,
                                         `pageCount`, `language`, `categories`].map(item => {
-                                        return (
-                                            <Card
-                                                key={item}
-                                                type="inner"
-                                                title={
-                                                    <span style={{textTransform: `capitalize`}}
-                                                    >
-                                                    {item}
+                                            if(specificBook[item]){
+                                                return (
+                                                    <Card
+                                                        key={item}
+                                                        type="inner"
+                                                        title={
+                                                            <span
+                                                                style={{textTransform: `capitalize`}}
+                                                            >
+                                                    {item + ':'}
                                                 </span>}
-                                            >
-                                                {specificBook[item]}
-                                            </Card>
-                                        )
+                                                    >
+                                                        {specificBook[item]}
+                                                    </Card>
+                                                )
+                                            }else return null
                                     })
                                 }
                             </Card>

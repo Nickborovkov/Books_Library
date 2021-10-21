@@ -1,4 +1,4 @@
-import './App.css';
+import './App.less';
 import React, {lazy, Suspense, useEffect, useState} from "react";
 import {Redirect, Route, Switch} from "react-router-dom";
 import BooksLibrary from "./components/booksLibrary/BooksLibrary";

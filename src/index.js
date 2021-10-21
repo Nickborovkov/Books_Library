@@ -5,7 +5,6 @@ import App from './App';
 import {HashRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import store from "./store/store";
-import 'antd/dist/antd.css'
 
 ReactDOM.render(
     // When using BrowserRouter there's a bug with page refreshing on github-pages,

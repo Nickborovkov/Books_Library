@@ -18,8 +18,7 @@ const BookItem = memo(({item}) => {
                             alt="volumeImg"
                             src={item.volumeInfo.imageLinks
                                 ? item.volumeInfo.imageLinks.thumbnail
-                                : noImageAvailable}
-                        />}
+                                : noImageAvailable}/>}
                     >
                         {item.volumeInfo.authors &&
                         <Meta
