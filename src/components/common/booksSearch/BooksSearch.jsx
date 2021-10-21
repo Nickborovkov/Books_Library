@@ -86,7 +86,7 @@ const BooksSearch = ({search, setSearch, order, setOrder, category, setCategory}
                                 style={{width: 200, margin: `0 10px`}}
                                 onChange={setNewCategory}
                             >
-                                <Option value="All">All</Option>
+                                <Option value=" ">All</Option>
                                 <Option value="Art">Art</Option>
                                 <Option value="Biography">Biography</Option>
                                 <Option value="Computers">Computers</Option>

@@ -67,7 +67,7 @@ const BookInfo = memo((props) => {
             {/*Results*/}
             {!isLoading && specificBook && !error &&
                 <div style={{width: `90%`, margin: `auto`}}>
-                    <Row  gutter={[10,10]}>
+                    <Row  gutter={[10,10]} justify='center'>
 
                         <Col xs={24}>
                             <Title
@@ -78,7 +78,7 @@ const BookInfo = memo((props) => {
                             </Title>
                         </Col>
 
-                        <Col xs={24} md={12}>
+                        <Col xs={24} md={6}>
                             <Card
                                 cover={<img
                                     alt="bookItem"
